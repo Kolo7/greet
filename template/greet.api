@@ -1,0 +1,35 @@
+syntax = "v1"
+
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+@server(
+	prefix: /v1
+	group: user
+)
+service greet-api {
+	@handler GreetHandler
+	get /from/:name(Request) returns (Response)
+}
+
+type (
+	SignDemoReq {
+		Msg string `json:"msg"`
+	}
+	SignDemoResp {
+		Msg string `json:"msg"`
+	}
+)
+
+@server (
+	signature: true // 通过 signature 关键字开启签名功能
+)
+service greet-api {
+	@handler SignDemo
+	post /sign/demo (SignDemoReq) returns (SignDemoResp)
+}

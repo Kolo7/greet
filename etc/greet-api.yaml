@@ -1,0 +1,9 @@
+Name: greet-api
+Host: 0.0.0.0
+Port: 8888
+Signature:
+  Strict: true
+  Expiry: 24h
+  PrivateKeys:
+    - Fingerprint: "aabb"
+      KeyFile: ./secret/id_rsa

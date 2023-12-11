@@ -1,0 +1,4 @@
+.vscode
+.goland
+*.bak
+*.log

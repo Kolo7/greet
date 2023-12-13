@@ -16,3 +16,11 @@ type SignDemoReq struct {
 type SignDemoResp struct {
 	Msg string `json:"msg"`
 }
+
+type UserInfoReq struct {
+	ID string `json:"id"`
+}
+
+type UserInfoResp struct {
+	Name string `json:"name"`
+}

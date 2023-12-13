@@ -11,6 +11,7 @@ type Response {
 @server(
 	prefix: /v1
 	group: user
+	middleware: UserAgentMiddleware
 )
 service greet-api {
 	@handler GreetHandler
@@ -32,4 +33,28 @@ type (
 service greet-api {
 	@handler SignDemo
 	post /sign/demo (SignDemoReq) returns (SignDemoResp)
+}
+
+type UserInfoReq {
+	ID string `json:"id"`
+}
+
+type UserInfoResp {
+	Name string `json:"name"`
+}
+
+@server (
+	jwt: Auth // 开启 jwt 认证
+	prefix: v1
+	group: userInfo
+	middleware: UserAgentMiddleware
+)
+service greet-api {
+	@handler userInfo
+	post /user/info (UserInfoReq) returns (UserInfoResp)
+}
+
+service greet-api {
+	@handler ping
+	get /ping
 }

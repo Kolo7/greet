@@ -7,6 +7,7 @@ import (
 	"greet/internal/types"
 
 	"github.com/zeromicro/go-zero/core/logx"
+	"github.com/zeromicro/x/errors"
 )
 
 type GreetLogic struct {
@@ -24,7 +25,12 @@ func NewGreetLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GreetLogic 
 }
 
 func (l *GreetLogic) Greet(req *types.Request) (resp *types.Response, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+	if req.Name == "you" {
+		return nil, errors.New(400, "搞错了")
+	}
+	mjHistory, err := l.svcCtx.MjHistorysModel.FindOne(l.ctx, 14201)
+	if err != nil {
+		errors.New(10000, "数据库有问题")
+	}
+	return &types.Response{Message: mjHistory.Prompt}, nil
 }

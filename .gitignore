@@ -2,3 +2,5 @@
 .goland
 *.bak
 *.log
+__*
+etc/*

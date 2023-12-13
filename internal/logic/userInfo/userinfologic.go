@@ -1,4 +1,4 @@
-package logic
+package userInfo
 
 import (
 	"context"
@@ -9,22 +9,22 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type SignDemoLogic struct {
+type UserInfoLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewSignDemoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SignDemoLogic {
-	return &SignDemoLogic{
+func NewUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserInfoLogic {
+	return &UserInfoLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *SignDemoLogic) SignDemo(req *types.SignDemoReq) (resp *types.SignDemoResp, err error) {
+func (l *UserInfoLogic) UserInfo(req *types.UserInfoReq) (resp *types.UserInfoResp, err error) {
 	// todo: add your logic here and delete this line
-
+	l.ctx.Value("custom-key")
 	return
 }

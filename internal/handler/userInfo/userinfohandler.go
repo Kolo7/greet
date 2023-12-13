@@ -1,25 +1,24 @@
-package handler
+package userInfo
 
 import (
 	"net/http"
 
-	"greet/internal/logic"
+	"github.com/zeromicro/go-zero/rest/httpx"
+	"greet/internal/logic/userInfo"
 	"greet/internal/svc"
 	"greet/internal/types"
-
-	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func SignDemoHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func UserInfoHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.SignDemoReq
+		var req types.UserInfoReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := logic.NewSignDemoLogic(r.Context(), svcCtx)
-		resp, err := l.SignDemo(&req)
+		l := userInfo.NewUserInfoLogic(r.Context(), svcCtx)
+		resp, err := l.UserInfo(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {

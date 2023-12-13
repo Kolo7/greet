@@ -2,7 +2,15 @@ module greet
 
 go 1.20
 
-require github.com/zeromicro/go-zero v1.6.0
+require (
+	github.com/zeromicro/go-zero v1.6.0
+	github.com/zeromicro/x v0.0.0-20230424055333-01c7fb9548d4
+)
+
+require (
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
+	github.com/go-redis/redis/v8 v8.11.5 // indirect
+)
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -11,6 +19,7 @@ require (
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/go-logr/logr v1.2.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
+	github.com/go-sql-driver/mysql v1.7.1
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/uuid v1.4.0 // indirect
